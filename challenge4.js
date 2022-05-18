@@ -31,6 +31,7 @@ function readLine() {
  *  2. INTEGER threshold
  */
 function processLogs(logs, threshold) {
+  console.log(logs, threshold);
   const trx = logs
     .map((l) => l.split(' '))
     .map((ls) => [...new Set(ls)])
@@ -40,12 +41,12 @@ function processLogs(logs, threshold) {
       return acc;
     }, {});
 
-  const keys = Object.keys(trx);
+  const entries = Object.entries(trx).sort((a, b) => a[1] - b[1]);
   const res = [];
 
-  for (let k of keys) {
-    if (trx[k] >= threshold) {
-      res.push(k);
+  for (let e of entries) {
+    if (e[1] >= threshold) {
+      res.push(e[0]);
     }
   }
 

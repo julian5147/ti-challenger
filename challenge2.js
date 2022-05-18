@@ -45,15 +45,18 @@ function inventoryList() {
         return console.log('The name cannot be empty');
       }
 
-      const index = inventory.indexOf(name)
-      if(index === -1){
+      const index = inventory.indexOf(name);
+      if (index === -1) {
         return console.log('The item not exist');
       }
 
-      inventory.splice(index, 1)
+      inventory.splice(index, 1);
       console.log('The article was successfully removed');
     },
-    getList() {return inventory},
+    getList() {
+      console.log(inventory);
+      return inventory;
+    },
   };
 }
 
@@ -69,5 +72,6 @@ function main() {
     const operationInfo = readLine().trim().split(' ');
     let value = operationInfo[1];
     //TODO
+    obj[operationInfo[0]](value);
   }
 }
